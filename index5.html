@@ -105,17 +105,19 @@
           bubbles.addLegend(60, 50, 500, 60);
 
           ss.afterDraw = function (shp, d) {
-            svg.selectAll("text." + dimple._createClass(d.yField)).remove();
+//            svg.selectAll("text." + dimple._createClass(d.yField)).remove();
+            d3.select("text.shpText").remove();
             var shape = d3.select(shp);
             svg.append("text")
-               .attr("class", dimple._createClass(d.yField))
+//               .attr("class", dimple._createClass(d.yField))
               .attr("x", parseFloat(shape.attr("cx")))
               .attr("y", parseFloat(shape.attr("cy")) + 4)
               .style("text-anchor", "middle")
               .style("font-size", "10px")
               .style("font-family", "sans-serif")
               .style("opacity", 0.7)
-              .text(d.zValue);
+              .text(d.zValue)
+              .attr('class', 'shpText');
             };
 
         // Only lab
